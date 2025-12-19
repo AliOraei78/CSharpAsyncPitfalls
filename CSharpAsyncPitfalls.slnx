@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="AsyncPitfallsConsole/AsyncPitfallsConsole.csproj" />
+  <Project Path="AsyncPitfallsUI/AsyncPitfallsUI.csproj" />
+</Solution>
