@@ -16,4 +16,13 @@ A dual-project showcase (Console + WinForms) demonstrating common async/await tr
   - With ConfigureAwait(false): stays on ThreadPool.
 - Best practice: Use `ConfigureAwait(false)` in library code to avoid performance issues and deadlocks.
 
-## Project Structure
+## Deadlock in UI (Sync over Async)
+
+- 3 common deadlock scenarios in WinForms:
+  1. .Result on async method
+  2. .Wait() on async method
+  3. Library code without ConfigureAwait(false)
+- Fixes:
+  - ConfigureAwait(false) in library code
+  - Task.Run for sync over async
+  - Full async chain (preferred)

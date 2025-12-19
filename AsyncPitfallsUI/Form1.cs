@@ -35,9 +35,13 @@ namespace AsyncPitfallsUI
             textBox1.Text = "Starting operation...";
 
             // This line causes a deadlock!
-            string result = DownloadDataAsync().Result; // or .Wait()
+            //string result = DownloadDataAsync().Result; // or .Wait()
 
-            textBox1.Text += $"\r\nResult: {result}";
+            //textBox1.Text += $"\r\nResult: {result}";
+
+            DownloadDataAsync().Wait(); // or .Wait()
+
+            textBox1.Text += $"\r\nResult: Completed";
         }
 
         private async void button2_Click(object sender, EventArgs e)
@@ -53,6 +57,26 @@ namespace AsyncPitfallsUI
         {
             await Task.Delay(3000); // Async operation
             return "Download completed!";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "Starting operation with bad library...\r\n";
+
+            // This line causes a deadlock because the library captures the context
+            string result = AsyncLibrary.GetDataBadAsync().Result;
+
+            textBox1.Text += $"Result: {result}";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "Starting operation with good library...\r\n";
+
+            // This line does not cause a deadlock because it uses ConfigureAwait(false)
+            string result = AsyncLibrary.GetDataGoodAsync().Result;
+
+            textBox1.Text += $"Result: {result}";
         }
     }
 }

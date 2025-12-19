@@ -33,6 +33,8 @@
             textBox1 = new TextBox();
             button2 = new Button();
             button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -81,11 +83,33 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
+            // button4
+            // 
+            button4.Location = new Point(266, 344);
+            button4.Name = "button4";
+            button4.Size = new Size(161, 29);
+            button4.TabIndex = 5;
+            button4.Text = "Deadlock with bad library";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(451, 344);
+            button5.Name = "button5";
+            button5.Size = new Size(184, 29);
+            button5.TabIndex = 6;
+            button5.Text = "Deadlock with fixed library";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(937, 572);
+            Controls.Add(button5);
+            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(textBox1);
@@ -105,5 +129,7 @@
         private TextBox textBox1;
         private Button button2;
         private Button button3;
+        private Button button4;
+        private Button button5;
     }
 }
