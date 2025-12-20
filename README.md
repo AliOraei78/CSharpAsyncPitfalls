@@ -26,3 +26,10 @@ A dual-project showcase (Console + WinForms) demonstrating common async/await tr
   - ConfigureAwait(false) in library code
   - Task.Run for sync over async
   - Full async chain (preferred)
+
+## Fire-and-Forget Pitfalls
+
+- Exception loss in unobserved tasks
+- Application lifetime issues (tasks continue after shutdown)
+- UI crash risk with unhandled exceptions
+- Best practices: try-catch, logging, proper hosting

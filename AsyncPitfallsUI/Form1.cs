@@ -78,5 +78,46 @@ namespace AsyncPitfallsUI
 
             textBox1.Text += $"Result: {result}";
         }
+
+        private async Task ThrowExceptionAsync()
+        {
+            await Task.Delay(1000);
+            throw new Exception("Exception in Fire-and-Forget in the UI!");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "Bad Fire-and-Forget started in the UI...\r\n";
+
+            // Bad Fire-and-Forget — the exception is lost and the UI may crash
+            ThrowExceptionAsync();
+
+            textBox1.Text += "The method returned (but the exception was lost!)";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "Safe Fire-and-Forget started in the UI...\r\n";
+
+            // Safe — the exception is caught
+            _ = ThrowExceptionSafeAsync();
+
+            textBox1.Text += "The method returned (exception was caught)";
+        }
+        private async Task ThrowExceptionSafeAsync()
+        {
+            try
+            {
+                await Task.Delay(1000);
+                throw new Exception("Exception was caught!");
+            }
+            catch (Exception ex)
+            {
+                textBox1.Invoke((MethodInvoker)(() =>
+                {
+                    textBox1.Text += $"\r\nException caught: {ex.Message}";
+                }));
+            }
+        }
     }
 }
