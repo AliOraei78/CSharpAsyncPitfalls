@@ -1,5 +1,7 @@
 <Solution>
   <Folder Name="/Solution Items/">
+    <File Path="AsyncBestPractices.md" />
+    <File Path="AsyncChecklist.md" />
     <File Path="README.md" />
   </Folder>
   <Project Path="AsyncPitfallsConsole/AsyncPitfallsConsole.csproj" />

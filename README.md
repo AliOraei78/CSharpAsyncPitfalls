@@ -33,3 +33,8 @@ A dual-project showcase (Console + WinForms) demonstrating common async/await tr
 - Application lifetime issues (tasks continue after shutdown)
 - UI crash risk with unhandled exceptions
 - Best practices: try-catch, logging, proper hosting
+
+- ## Async/Await Best Practices & Checklist
+
+- Summary of pitfalls (context capture, deadlock, fire-and-forget).
+- Personal 10-point checklist for safe async code.
